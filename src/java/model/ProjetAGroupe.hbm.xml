@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Apr 19, 2019 1:41:03 AM by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="model.ProjetAGroupe" table="projet_a_groupe" catalog="proplanc_db">
+        <composite-id name="id" class="model.ProjetAGroupeId">
+            <key-property name="idGroupe" type="int">
+                <column name="id_groupe" />
+            </key-property>
+            <key-property name="idProjet" type="int">
+                <column name="id_projet" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="groupe" class="model.Groupe" update="false" insert="false" fetch="select">
+            <column name="id_groupe" not-null="true" />
+        </many-to-one>
+        <many-to-one name="projet" class="model.Projet" update="false" insert="false" fetch="select">
+            <column name="id_projet" not-null="true" />
+        </many-to-one>
+    </class>
+</hibernate-mapping>

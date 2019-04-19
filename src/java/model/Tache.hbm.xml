@@ -1,0 +1,81 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Apr 19, 2019 1:41:03 AM by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="model.Tache" table="tache" catalog="proplanc_db">
+        <id name="idTache" type="java.lang.Integer">
+            <column name="id_tache" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="colonne" class="model.Colonne" fetch="select">
+            <column name="id_colonne" not-null="true" unique="true" />
+        </many-to-one>
+        <many-to-one name="projet" class="model.Projet" fetch="select">
+            <column name="id_projet" not-null="true" />
+        </many-to-one>
+        <property name="titre" type="string">
+            <column name="titre" length="100" not-null="true" />
+        </property>
+        <property name="description" type="string">
+            <column name="description" length="65535" not-null="true" />
+        </property>
+        <property name="dateCreation" type="timestamp">
+            <column name="date_creation" length="19" not-null="true" />
+        </property>
+        <property name="responsable" type="string">
+            <column name="responsable" length="30" not-null="true" />
+        </property>
+        <property name="createur" type="string">
+            <column name="createur" length="30" not-null="true" />
+        </property>
+        <property name="dateDebut" type="date">
+            <column name="date_debut" length="10" not-null="true" />
+        </property>
+        <property name="dateFin" type="date">
+            <column name="date_fin" length="10" not-null="true" />
+        </property>
+        <property name="dateModification" type="timestamp">
+            <column name="date_modification" length="19" not-null="true" />
+        </property>
+        <property name="dateEstime" type="date">
+            <column name="date_estime" length="10" not-null="true" />
+        </property>
+        <property name="dateDeplace" type="timestamp">
+            <column name="date_deplace" length="19" not-null="true" />
+        </property>
+        <property name="priorite" type="byte">
+            <column name="priorite" not-null="true" />
+        </property>
+        <set name="tacheATagsForIdTache" table="tache_a_tag" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="id_tache" not-null="true" />
+            </key>
+            <one-to-many class="model.TacheATag" />
+        </set>
+        <set name="projetActivites" table="projet_activite" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="id_tache" not-null="true" />
+            </key>
+            <one-to-many class="model.ProjetActivite" />
+        </set>
+        <set name="commentaires" table="commentaire" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="id_tache" not-null="true" />
+            </key>
+            <one-to-many class="model.Commentaire" />
+        </set>
+        <set name="tacheATagsForIdTag" table="tache_a_tag" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="id_tag" not-null="true" />
+            </key>
+            <one-to-many class="model.TacheATag" />
+        </set>
+        <set name="fichiers" table="fichier" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="id_tache" not-null="true" />
+            </key>
+            <one-to-many class="model.Fichier" />
+        </set>
+    </class>
+</hibernate-mapping>

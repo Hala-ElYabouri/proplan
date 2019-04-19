@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+  <session-factory>
+    <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+    <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+    <property name="hibernate.connection.url">jdbc:mysql://185.87.187.226:3306/proplanc_db</property>
+    <property name="hibernate.connection.username">proplanc_admin</property>
+    <property name="hibernate.connection.password">ldw0766555519</property>
+    <mapping resource="model/TacheATag.hbm.xml"/>
+    <mapping resource="model/Tache.hbm.xml"/>
+    <mapping resource="model/Groupe.hbm.xml"/>
+    <mapping resource="model/Fichier.hbm.xml"/>
+    <mapping resource="model/Commentaire.hbm.xml"/>
+    <mapping resource="model/ProjetActivite.hbm.xml"/>
+    <mapping resource="model/Colonne.hbm.xml"/>
+    <mapping resource="model/GroupeAUtilisateur.hbm.xml"/>
+    <mapping resource="model/Projet.hbm.xml"/>
+    <mapping resource="model/Tag.hbm.xml"/>
+    <mapping resource="model/ProjetAGroupe.hbm.xml"/>
+    <mapping resource="model/Utilisateur.hbm.xml"/>
+  </session-factory>
+</hibernate-configuration>

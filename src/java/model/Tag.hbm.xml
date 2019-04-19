@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Apr 19, 2019 1:41:03 AM by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="model.Tag" table="tag" catalog="proplanc_db">
+        <id name="idTag" type="java.lang.Integer">
+            <column name="id_tag" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="projet" class="model.Projet" fetch="select">
+            <column name="id_projet" not-null="true" />
+        </many-to-one>
+        <property name="nomTag" type="string">
+            <column name="nom_tag" length="50" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

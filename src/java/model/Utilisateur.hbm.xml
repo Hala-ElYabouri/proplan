@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Apr 19, 2019 1:41:03 AM by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="model.Utilisateur" table="utilisateur" catalog="proplanc_db">
+        <id name="idUtilisateur" type="java.lang.Integer">
+            <column name="id_utilisateur" />
+            <generator class="identity" />
+        </id>
+        <property name="nomUtilisateur" type="string">
+            <column name="nom_utilisateur" length="30" not-null="true" />
+        </property>
+        <property name="motDePasse" type="string">
+            <column name="mot_de_passe" length="30" not-null="true" />
+        </property>
+        <property name="nom" type="string">
+            <column name="nom" length="30" not-null="true" />
+        </property>
+        <property name="prenom" type="string">
+            <column name="prenom" length="30" not-null="true" />
+        </property>
+        <property name="email" type="string">
+            <column name="email" length="50" not-null="true" />
+        </property>
+        <property name="role" type="string">
+            <column name="role" length="30" not-null="true" />
+        </property>
+        <property name="avatarChemin" type="binary">
+            <column name="avatar_chemin" not-null="true" />
+        </property>
+        <property name="dateInscription" type="timestamp">
+            <column name="date_inscription" length="19" not-null="true" />
+        </property>
+        <property name="dateModification" type="timestamp">
+            <column name="date_modification" length="19" not-null="true" />
+        </property>
+        <set name="groupeAUtilisateurs" table="groupe_a_utilisateur" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="id_utilisateur" not-null="true" />
+            </key>
+            <one-to-many class="model.GroupeAUtilisateur" />
+        </set>
+        <set name="commentaires" table="commentaire" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="id_utilisateur" not-null="true" />
+            </key>
+            <one-to-many class="model.Commentaire" />
+        </set>
+        <set name="projetActivites" table="projet_activite" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="id_utilisateur" not-null="true" />
+            </key>
+            <one-to-many class="model.ProjetActivite" />
+        </set>
+        <set name="fichiers" table="fichier" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="id_utilisateur" not-null="true" />
+            </key>
+            <one-to-many class="model.Fichier" />
+        </set>
+    </class>
+</hibernate-mapping>

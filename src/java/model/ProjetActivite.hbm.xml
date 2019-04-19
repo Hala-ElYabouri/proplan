@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Apr 19, 2019 1:41:03 AM by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="model.ProjetActivite" table="projet_activite" catalog="proplanc_db">
+        <id name="idActivite" type="java.lang.Integer">
+            <column name="id_activite" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="tache" class="model.Tache" fetch="select">
+            <column name="id_tache" not-null="true" />
+        </many-to-one>
+        <many-to-one name="utilisateur" class="model.Utilisateur" fetch="select">
+            <column name="id_utilisateur" not-null="true" />
+        </many-to-one>
+        <many-to-one name="projet" class="model.Projet" fetch="select">
+            <column name="id_projet" not-null="true" />
+        </many-to-one>
+        <property name="dateCreation" type="timestamp">
+            <column name="date_creation" length="19" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>
